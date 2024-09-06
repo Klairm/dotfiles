@@ -6,6 +6,11 @@
   (package-refresh-contents)
   (package-install 'use-package))
 
+
+(setq org-directory "~/MEGAsync/Notes")
+
+(setq org-agenda-files (directory-files-recursively org-directory "\\.org$"))
+
 (use-package eldoc-box
   :ensure t
   :hook (prog-mode . eldoc-box-hover-at-point-mode  )
@@ -43,7 +48,7 @@
     (corfu-auto-prefix 2)
     (corfu-cycle t)
     (corfu-preselect 'prompt)
-    :hook ((eglot-managed-mode emacs-lisp-mode) . corfu-mode))
+    :hook ((eglot-managed-mode) . corfu-mode))
 
 
 ;; UI and normal functionalities configs
@@ -61,8 +66,6 @@
 
 
 (add-hook 'dired-mode-hook 'org-download-enable)
-
-;; ---
 
 
 
@@ -96,10 +99,11 @@
  '(custom-safe-themes
    '("b1a691bb67bd8bd85b76998caf2386c9a7b2ac98a116534071364ed6489b695d" default))
  '(doc-view-continuous t)
- '(org-agenda-files '("~/hi.org"))
+ '(org-agenda-files
+   '("/home/ivan/MEGAsync/Notes/hi.org" "/home/ivan/MEGAsync/Notes/computers.org"))
  '(org-export-backends '(ascii html latex md odt org))
  '(package-selected-packages
-   '(langtool languagetool org-download ox-gfm ox-md eglot-java-mode yasnippet-snippets company yasnippet treemacs eglot-java windresize ng2-mode corfu eldoc-box magit gruvbox-theme eglot)))
+   '(langtool org-download ox-gfm ox-md eglot-java-mode yasnippet-snippets company yasnippet eglot-java windresize ng2-mode corfu eldoc-box magit gruvbox-theme eglot)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
