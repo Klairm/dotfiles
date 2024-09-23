@@ -6,7 +6,7 @@
   (package-refresh-contents)
   (package-install 'use-package))
 
-; Sets the directory for the agenda note sin org-mode, so I can list all the TODOS from those files
+; Sets the directory for the agenda note sin org-mode, so I can list all the TODOS from those filesz
 (setq org-directory "~/MEGAsync/Notes")
 
 (setq org-agenda-files (directory-files-recursively org-directory "\\.org$"))
@@ -49,7 +49,7 @@
     (corfu-auto-prefix 2)
     (corfu-cycle t)
     (corfu-preselect 'prompt)
-    :hook ((eglot-managed-mode) . corfu-mode)
+    :hook ((eglot-managed-mode org-mode) . corfu-mode)
     )
 
 
@@ -109,7 +109,7 @@
    '("/home/ivan/MEGAsync/Notes/hi.org" "/home/ivan/MEGAsync/Notes/computers.org"))
  '(org-export-backends '(ascii html latex md odt org))
  '(package-selected-packages
-   '(projectile langtool org-download  ox-md eglot-java-mode yasnippet-snippets company yasnippet eglot-java windresize ng2-mode corfu eldoc-box magit gruvbox-theme eglot)))
+   '(ox-json kotlin-mode nov projectile langtool org-download ox-md eglot-java-mode yasnippet-snippets company yasnippet eglot-java windresize ng2-mode corfu eldoc-box magit gruvbox-theme eglot)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
