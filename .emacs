@@ -13,7 +13,7 @@
 
 (use-package eldoc-box
   :ensure t
-;;  :hook (prog-mode . eldoc-box-hover-at-point-mode  )
+  :hook (prog-mode . eldoc-box-hover-at-point-mode  )
   )
 
 (use-package projectile
@@ -21,10 +21,16 @@
 (use-package eglot
   :ensure t
   :hook (prog-mode . eglot-ensure))
+(use-package eglot-java
+  :ensure t)
 (use-package windresize
   :ensure t)
 (use-package typescript-mode
   :ensure t)
+
+
+(use-package nov
+  :ensure t )
 
 
 (use-package org-download
