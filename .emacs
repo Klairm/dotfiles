@@ -65,6 +65,9 @@
 (tool-bar-mode 0)
 (menu-bar-mode 0)
 
+(fido-vertical-mode 1)
+(create-lock-files 0)
+
 ;; auto-close parenthesis and brackets
 (electric-pair-mode 1)
 (setq electric-pair-pairs
