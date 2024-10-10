@@ -3,6 +3,8 @@ set $mod Mod4
 font pango:DejaVu Sans Mono 8
 
 
+
+
 # set background 
 exec --no-startup-id feh --bg-scale /home/ivan/Imágenes/Wallpaper/hellboy.jpg
 
@@ -10,11 +12,8 @@ exec --no-startup-id feh --bg-scale /home/ivan/Imágenes/Wallpaper/hellboy.jpg
 # https://wiki.archlinux.org/index.php/XDG_Autostart
 exec --no-startup-id dex --autostart --environment i3
 
-
-# flameshoy keysym
-
+# flameshot keysym
 bindsym Print exec flameshot gui
-
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -163,7 +162,7 @@ bar {
 
 ## Volume control
 
-# Path to volume control, without trailing slash
+# path to volume control, without trailing slash
 set $volumepath ~/i3-volume
 
 # Command for the status line
