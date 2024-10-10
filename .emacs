@@ -33,6 +33,14 @@
   :ensure t )
 
 
+(use-package phpactor
+  :ensure t
+  )
+(use-package php-mode
+  :ensure t)
+
+
+
 (use-package org-download
   :ensure t
   :bind ("M-o p" . org-download-clipboard))
