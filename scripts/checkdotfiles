@@ -1,0 +1,27 @@
+#!/bin/bash
+
+dotfiles=( ~/.emacs ~/.config/i3/config ~/.vimrc ~/.i3status.conf )
+dotfiles_dir=~/dotfiles/
+
+
+function copy_files(){
+    echo "Copying files..."
+    for i in ${dotfiles[@]}; do
+	echo "Copying" $i"..."
+	cp $i $dotfiles_dir
+    done
+}
+
+function update_git() {
+    cd $dotfiles_dir
+    git add $dotfiles
+    git commit -p
+    git push origin master
+    
+}
+
+
+echo "Checking changes in the dotfiles..."
+copy_files
+update_git
+echo "Done."
