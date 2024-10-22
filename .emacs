@@ -74,7 +74,10 @@
 (menu-bar-mode 0)
 
 (fido-vertical-mode 1)
-(create-lock-files 0)
+;(create-lock-files 0)
+
+(setq gc-cons-threshold (* 50 1000 1000))  ;; Increase garbage collection threshold to 50MB
+
 
 ;; auto-close parenthesis and brackets
 (electric-pair-mode 1)
