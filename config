@@ -4,6 +4,10 @@ font pango:DejaVu Sans Mono 8
 
 
 
+# fix some games in fullscreen by using compositor with vsync
+
+exec_always --no-startup-id picom --experimental-backends --vsync
+
 
 # set background 
 exec --no-startup-id feh --bg-scale /home/ivan/Imágenes/Wallpaper/hellboy.jpg
@@ -217,3 +221,4 @@ bindsym XF86AudioMute        exec --no-startup-id $volumepath/volume -n -t $stat
 # floating pop up automatically
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="task_dialog"] floating enable
+
