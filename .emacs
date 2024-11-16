@@ -104,20 +104,16 @@
 (with-eval-after-load 'typescript-mode (add-hook 'typescript-mode-hook #'lsp))
 
 
+
+
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(custom-enabled-themes '(gruvbox))
- '(custom-safe-themes
-   '("b1a691bb67bd8bd85b76998caf2386c9a7b2ac98a116534071364ed6489b695d" default))
- '(doc-view-continuous t)
- '(org-agenda-files
-   '("/home/ivan/MEGAsync/Notes/hi.org" "/home/ivan/MEGAsync/Notes/computers.org"))
- '(org-export-backends '(ascii html latex md odt org))
  '(package-selected-packages
-   '(ox-json kotlin-mode nov projectile langtool org-download ox-md eglot-java-mode yasnippet-snippets company yasnippet eglot-java windresize ng2-mode corfu eldoc-box magit gruvbox-theme eglot)))
+   '(phpt-mode php-eldoc company-php flymake-php corfu langtool org-download typescript-mode windresize eglot-java eglot projectile eldoc-box use-package)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
