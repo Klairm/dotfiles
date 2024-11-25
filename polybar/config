@@ -1,0 +1,140 @@
+[colors]
+background = #282A2E
+background-alt = #373B41
+foreground = #FFFFFF
+primary =   #36A1FF
+secondary = #FFFFFF
+alert = #A54242
+disabled = #707880
+succes = #00FF00
+
+[bar/example]
+width = 100%
+height = 24pt
+radius = 8
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 3pt
+
+border-size = 4pt
+border-color = #00000000
+
+padding-left = 0
+padding-right = 0
+
+module-margin = 1
+
+separator = |
+separator-foreground = ${colors.secondary}
+
+font-0 = monospace;2
+
+modules-left = xworkspaces
+modules-right =  wlan battery pulseaudio cpu date 
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+enable-ipc = true
+
+tray-position = right
+bottom = true
+
+[module/xworkspaces]
+type = internal/xworkspaces
+
+label-active = %name%
+label-active-background = ${colors.background-alt}
+label-active-underline= ${colors.primary}
+label-active-padding = 1
+
+label-occupied = %name%
+label-occupied-padding = 1
+
+label-urgent = %name%
+label-urgent-background = ${colors.alert}
+label-urgent-padding = 1
+
+label-empty = %name%
+label-empty-foreground = ${colors.disabled}
+label-empty-padding = 1
+
+[module/pulseaudio]
+type = internal/pulseaudio
+
+format-volume-prefix = "VOL "
+format-volume-prefix-foreground = ${colors.primary}
+format-volume = <label-volume>
+
+label-volume = %percentage%%
+
+label-muted = muted
+label-muted-foreground = ${colors.disabled}
+
+[module/memory]
+type = internal/memory
+interval = 2
+format-prefix = "RAM "
+format-prefix-foreground = ${colors.primary}
+label = %percentage_used:2%%
+
+[module/cpu]
+type = internal/cpu
+interval = 2
+format-prefix = "CPU "
+format-prefix-foreground = ${colors.primary}
+label = %percentage:2%%
+
+[module/date]
+type = internal/date
+date = %Y-%m-%d %H:%M
+
+[module/battery]
+type = internal/battery
+battery = BAT0  
+adapter = AC
+full-at = 99
+poll-interval = 5
+format-prefix-foreground= ${colors.primary}
+label-charging = "%percentage%%"
+label-charging-foreground = ${colors.secondary}
+label-discharging = "Discharging: %percentage%% (%time%)"
+label-discharging-foreground = ${colors.alert}
+
+
+label-full = "%percentage%%"
+label-full-prefix = "Full:"
+format-full-prefix = "Full: "
+format-full-prefix-foreground = ${colors.primary}
+format-full-foreground = ${colors.succes}
+
+
+[network-base]
+type = internal/network
+interval = 5
+
+format-connected = <label-connected>
+format-disconnected = <label-disconnected>
+label-disconnected = %{F#F0C674}%ifname%%{F#707880} disconnected
+
+[module/wlan]
+inherit = network-base
+interface-type = wireless
+interface = wlp2s0
+label-connected = %local_ip%
+
+label-connected-foreground = ${colors.succes}
+[module/eth]
+inherit = network-base
+interface-type = wired
+interface = enp1s0
+label-connected = %{F#36A1FF}%ifname%%{F-} %local_ip%
+
+[settings]
+screenchange-reload = true
+pseudo-transparency = true
+
+
+

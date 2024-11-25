@@ -1,30 +1,46 @@
 set $mod Mod4
 
-font pango:DejaVu Sans Mono 8
+font pango:DejaVu Sans Mono 13
+
+exec --no-startup-id dbus-launch --sh-syntax --exit-with-session
 
 
+gaps inner 15
+gaps inner 10
+
+smart_gaps on
 
 # fix some games in fullscreen by using compositor with vsync
 
 exec_always --no-startup-id picom --experimental-backends --vsync
 
-
 # set background 
 exec --no-startup-id feh --bg-scale ~/Imágenes/crazy.jpg
 
 
-
+exec udiskie -s
 exec_always --no-startup-id i3-auto-tiling
 
+#Enable tapping (click on touch) in my thinkpad
+exec xinput set-prop "ELAN06C7:00 04F3:3193 Touchpad" "libinput Tapping Enabled" 1
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
 exec --no-startup-id dex --autostart --environment i3
 
 exec --no-startup-id caffeine-indicator 
 
+exec --no-startup-id flameshot
 # flameshot keysym
 bindsym Print exec flameshot gui
 
+
+
+# Brightness key binding
+
+bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl -d amdgpu_bl0 s +10%
+
+
+bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl -d amdgpu_bl0 s 10%-
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
@@ -43,24 +59,12 @@ bindsym $mod+d exec --no-startup-id "rofi -show drun -modi drun,run, -show-icons
 
 
 # change focus
-bindsym $mod+j focus left
-bindsym $mod+k focus down
-bindsym $mod+l focus up
-bindsym $mod+ntilde focus right
-
-# alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
-# move focused window
-bindsym $mod+Shift+j move left
-bindsym $mod+Shift+k move down
-bindsym $mod+Shift+l move up
-bindsym $mod+Shift+ntilde move right
-
-# alternatively, you can use the cursor keys:
+# move windows
 bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
@@ -75,8 +79,7 @@ bindsym $mod+v split v
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
 
-# change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
+# change container layout 
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
@@ -149,12 +152,6 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym j resize shrink width 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym ntilde resize grow width 10 px or 10 ppt
-
-        # same bindings, but for the arrow keys
         bindsym Left resize shrink width 10 px or 10 ppt
         bindsym Down resize grow height 10 px or 10 ppt
         bindsym Up resize shrink height 10 px or 10 ppt
@@ -170,15 +167,21 @@ bindsym $mod+r mode "resize"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
-bar {
-        status_command i3status -c ~/.i3status.conf
-}
+#bar {
+#        status_command i3status -c ~/.i3status.conf
+#}
+
+# trying polybar for now
+
+exec_always --no-startup-id killall -q polybar; polybar example
+
+
 # Review the lines below and append to ~/.config/i3/config
 
 ## Volume control
 
 # path to volume control, without trailing slash
-set $volumepath ~/i3-volume
+set $volumepath ~/dotfiles/i3-volume
 
 # Command for the status line
 #   ie: i3blocks, i3status
@@ -202,8 +205,10 @@ set $volumestep 5
 #
 
 # Stolen from here https://faq.i3wm.org/question/239/how-do-i-suspendlockscreen-and-logout.1.html 
-set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
-mode "$mode_system" {
+
+mode "_system" {
+
+#    exec --no-startup-id notify-send "(l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown"
     bindsym l exec --no-startup-id i3exit lock, mode "default"
     bindsym e exec --no-startup-id i3exit logout, mode "default"
     bindsym s exec --no-startup-id i3exit suspend, mode "default"
@@ -214,8 +219,10 @@ mode "$mode_system" {
     # back to normal: Enter or Escape
     bindsym Return mode "default"
     bindsym Escape mode "default"
+    
 }
-bindsym $mod+Delete mode "$mode_system"
+bindsym $mod+Delete mode "_system"
+
 # Using pulseaudio-utils (append "-s $sinkname" without quotes to override default sink)
 bindsym XF86AudioRaiseVolume exec --no-startup-id $volumepath/volume -n -t $statuscmd -u $statussig up $volumestep
 bindsym XF86AudioLowerVolume exec --no-startup-id $volumepath/volume -n -t $statuscmd -u $statussig down $volumestep
