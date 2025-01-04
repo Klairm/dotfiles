@@ -15,6 +15,8 @@
   :ensure t
   :hook (prog-mode . eldoc-box-hover-at-point-mode  )
   )
+(use-package magit
+  :ensure t)
 
 (use-package projectile
   :ensure t)
@@ -64,7 +66,7 @@
 (fido-vertical-mode 1)
 ;(create-lock-files 0)
 
-(setq gc-cons-threshold (* 50 1000 1000))  ;; Increase garbage collection threshold to 50MB
+(setq gc-cons-threshold (* 5000 5000 5000))  ;; Increase garbage collection threshold to 50MB
 
 
 ;; auto-close parenthesis and brackets
@@ -104,7 +106,7 @@
 (with-eval-after-load 'typescript-mode (add-hook 'typescript-mode-hook #'lsp))
 
 
-
+(load-theme 'wombat)
 
 
 (custom-set-variables
@@ -112,8 +114,10 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   '("51fa6edfd6c8a4defc2681e4c438caf24908854c12ea12a1fbfd4d055a9647a3" "0517759e6b71f4ad76d8d38b69c51a5c2f7196675d202e3c2507124980c3c2a3" default))
  '(package-selected-packages
-   '(phpt-mode php-eldoc company-php flymake-php corfu langtool org-download typescript-mode windresize eglot-java eglot projectile eldoc-box use-package)))
+   '(vterm colormaps gruvbox-theme magit ag imenu-list twig-mode treemacs-projectile php-mode calibre org-download typescript-mode windresize eglot-java eglot projectile eldoc-box use-package)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
