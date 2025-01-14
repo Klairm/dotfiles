@@ -31,6 +31,9 @@
 (use-package eglot-java
   :ensure t)
 
+(use-package company
+  :ensure t
+  :hook (prog-mode . company-mode))
 
 
 (use-package windresize
@@ -125,7 +128,7 @@
  '(custom-safe-themes
    '("51fa6edfd6c8a4defc2681e4c438caf24908854c12ea12a1fbfd4d055a9647a3" "0517759e6b71f4ad76d8d38b69c51a5c2f7196675d202e3c2507124980c3c2a3" default))
  '(package-selected-packages
-   '(php-cs-fixer php-eldoc phpactor vterm colormaps gruvbox-theme magit ag imenu-list twig-mode treemacs-projectile php-mode calibre org-download typescript-mode windresize eglot-java eglot projectile eldoc-box use-package)))
+   '(company kotlin-mode php-cs-fixer php-eldoc phpactor vterm colormaps gruvbox-theme magit ag imenu-list twig-mode treemacs-projectile php-mode calibre org-download typescript-mode windresize eglot-java eglot projectile eldoc-box use-package)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
