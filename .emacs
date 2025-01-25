@@ -4,14 +4,12 @@
 (global-display-line-numbers-mode)
 (tool-bar-mode 0)
 (menu-bar-mode 0)
+(fido-vertical-mode 1)
+(setq create-lockfiles nil)
 ; TURN OFF THE BEEP
 (setq visible-bell 1)
 
-(fido-vertical-mode 1)
-
-
-(setq gc-cons-threshold (* 5000 5000 5000))  ;; Increase garbage collection threshold 
-
+(setq gc-cons-threshold (* 50 1000 1000))  ;; Increase garbage collection threshold 
 
 
 (require 'package)
@@ -22,7 +20,7 @@
   (package-refresh-contents)
   (package-install 'use-package))
 
-; Sets the directory for the agenda note sin org-mode, so I can list all the TODOS from those filesz
+; Sets the directory for the agenda note sin org-mode, so I can list all the TODOS from those files
 (setq org-directory "~/MEGAsync/Notes")
 (setq todo-file (concat org-directory "/todo.org" ))
 (setq org-agenda-files (directory-files-recursively org-directory "\\.org$"))
@@ -56,8 +54,6 @@
               :test #'equal)
   :hook (prog-mode . eglot-ensure))
 
-(use-package eglot-java
-  :ensure t)
 
 (use-package company
   :ensure t
@@ -77,29 +73,9 @@
 
 (use-package smartparens
   :ensure t  
-  :hook (prog-mode text-mode org-mode) 
+  :hook ((prog-mode . text-mode) . org-mode) 
   :config
   (require 'smartparens-config))
-
-; Java configs
-(defun custom-java-stuff ()
-  (auto-fill-mode)
-  (yas-minor-mode)
-  (company-mode)
-  (company-yasnippet)
-  
-   )
-
-(add-hook 'java-mode-hook 'eglot-java-mode)
- (with-eval-after-load 'eglot-java
-   (define-key eglot-java-mode-map (kbd "C-c l n") #'eglot-java-file-new)
-   (define-key eglot-java-mode-map (kbd "C-c l x") #'eglot-java-run-main)
-   (define-key eglot-java-mode-map (kbd "C-c l t") #'eglot-java-run-test)
-   (define-key eglot-java-mode-map (kbd "C-c l N") #'eglot-java-project-new)
-   (define-key eglot-java-mode-map (kbd "C-c l T") #'eglot-java-project-build-task)
-   (define-key eglot-java-mode-map (kbd "C-c l R") #'eglot-java-project-build-refresh))
-
- (add-hook 'eglot-java-mode 'custom-java-stuff)
 
 
 (load-theme 'wombat)
