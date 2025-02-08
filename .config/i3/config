@@ -12,7 +12,18 @@ smart_gaps on
 
 # fix some games in fullscreen by using compositor with vsync
 
-exec_always --no-startup-id picom --experimental-backends --vsync
+exec_always --no-startup-id picom --config ~/.config/picom.conf
+
+
+# Colores de las ventanas
+client.focused          #36A1FF #0A0F2C #36A1FF #36A1FF
+client.focused_inactive #373B41 #0A0F2C #707880 #373B41
+client.unfocused        #373B41 #0A0F2C #707880 #373B41
+client.urgent           #A54242 #0A0F2C #FFFFFF #A54242
+client.placeholder      #000000 #0A0F2C #FFFFFF #000000
+
+# Bordes redondeados
+for_window [class=".*"] border pixel 2
 
 # set background 
 exec --no-startup-id feh --bg-scale ~/Imágenes/crazy.jpg
@@ -22,7 +33,7 @@ exec udiskie -s
 exec_always --no-startup-id i3-auto-tiling
 
 #Enable tapping (click on touch) in my thinkpad
-exec xinput set-prop "ELAN06C7:00 04F3:3193 Touchpad" "libinput Tapping Enabled" 1
+#exec xinput set-prop "ELAN06C7:00 04F3:3193 Touchpad" "libinput Tapping Enabled" 1
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
 exec --no-startup-id dex --autostart --environment i3
@@ -173,7 +184,7 @@ bindsym $mod+r mode "resize"
 
 # trying polybar for now
 
-exec_always --no-startup-id killall -q polybar; polybar example
+exec_always --no-startup-id killall -q polybar; polybar desktop
 
 
 # Review the lines below and append to ~/.config/i3/config
