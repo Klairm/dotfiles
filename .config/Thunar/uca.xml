@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actions>
+<action>
+	<icon>brasero</icon>
+	<name>Montar iso</name>
+	<submenu></submenu>
+	<unique-id>1738520803110388-1</unique-id>
+	<command>udisksctl loop-setup -f %f</command>
+	<description></description>
+	<range>*</range>
+	<patterns>*.iso;*.ISO</patterns>
+	<directories/>
+	<image-files/>
+</action>
+<action>
+	<icon>utilities-terminal</icon>
+	<name>Abrir un terminal aquí</name>
+	<submenu></submenu>
+	<unique-id>1721340236043123-1</unique-id>
+	<command>/usr/bin/alacritty --working-directory %f</command>
+	<description>Ejemplo de una acción personalizada</description>
+	<range></range>
+	<patterns>*</patterns>
+	<startup-notify/>
+	<directories/>
+</action>
+<action>
+	<icon>security-medium</icon>
+	<name>Scan for virus</name>
+	<submenu></submenu>
+	<unique-id>1739703675300483-1</unique-id>
+	<command>clamtk %F</command>
+	<description></description>
+	<range>*</range>
+	<patterns>*</patterns>
+	<directories/>
+	<audio-files/>
+	<image-files/>
+	<other-files/>
+	<text-files/>
+	<video-files/>
+</action>
+</actions>
