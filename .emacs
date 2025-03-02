@@ -21,7 +21,7 @@
   (package-install 'use-package))
 
 ; Sets the directory for the agenda note sin org-mode, so I can list all the TODOS from those files
-(setq org-directory "~/MEGAsync/Notes")
+(setq org-directory "~/MEGA/Notes")
 (setq todo-file (concat org-directory "/todo.org" ))
 (setq org-agenda-files (directory-files-recursively org-directory "\\.org$"))
 
@@ -48,6 +48,7 @@
   :ensure t)
 (use-package eglot
   :ensure t
+  :bind ( "C-c f" . eglot-format) 
   :config
     (cl-pushnew '(php-mode . ("intelephense" "--stdio"))
               eglot-server-programs
@@ -59,10 +60,18 @@
   :ensure t
   :hook (prog-mode . company-mode))
 
-
+(use-package adaptive-wrap
+  :ensure t
+  :hook ( ( org-mode . adaptive-wrap-prefix-mode)
+	  ( prog-mode . adaptive-wrap-prefix-mode)
+	  ( text-mode . adaptive-wrap-prefix-mode) ))
 (use-package windresize
   :ensure t)
 
+(use-package org
+  :ensure nil
+  :bind ("C-c t" . org-todo-list)
+  )
 
 (use-package org-download
   :ensure t
@@ -70,12 +79,6 @@
   :hook (dired-mode-hook . org-download-enable)
   )
 
-
-(use-package smartparens
-  :ensure t  
-  :hook ((prog-mode . text-mode) . org-mode) 
-  :config
-  (require 'smartparens-config))
 
 
 (load-theme 'wombat)
@@ -89,45 +92,10 @@
  '(custom-safe-themes
    '("51fa6edfd6c8a4defc2681e4c438caf24908854c12ea12a1fbfd4d055a9647a3" "0517759e6b71f4ad76d8d38b69c51a5c2f7196675d202e3c2507124980c3c2a3" default))
  '(package-selected-packages
-   '(clang-format org-drawio bash-completion company kotlin-mode php-cs-fixer php-eldoc phpactor vterm colormaps gruvbox-theme magit ag imenu-list twig-mode treemacs-projectile php-mode calibre org-download typescript-mode windresize eglot-java eglot projectile eldoc-box use-package)))
+   '(org-agenda adaptive-wrap clang-format org-drawio bash-completion company kotlin-mode php-cs-fixer php-eldoc phpactor vterm colormaps gruvbox-theme magit ag imenu-list twig-mode treemacs-projectile php-mode calibre org-download typescript-mode windresize eglot-java eglot projectile eldoc-box use-package)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
-(find-file todo-file)
-
-
-;; Unused stuff
-
-
-;; auto-close parenthesis and brackets
-;; (electric-pair-mode 1)
-;; (setq electric-pair-pairs
-;;       '(
-;;         (?\" . ?\")
-;;         (?\{ . ?\})))
-
-
-;; (use-package langtool
-;;   :ensure t
-;;   :config
-;;   (setq langtool-language-tool-jar "~/.languagetool/languagetool-commandline.jar")
-;;   :init
-;;   (defun org-lg-hook ()
-;;     (add-hook 'before-save-hook 'langtool-check-buffer nil 'local))
-;;   :hook (org-mode . org-lg-hook))
-
-
-;; (use-package corfu
-;;   :ensure t
-;;     :custom
-;;     (corfu-auto t)
-;;     (corfu-auto-delay .18)
-;;     (corfu-auto-prefix 2)
-;;     (corfu-cycle t)
-;;     (corfu-preselect 'prompt)
-;;     :hook ((eglot-managed-mode org-mode) . corfu-mode)
-;;     )
-
