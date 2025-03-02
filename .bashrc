@@ -103,6 +103,7 @@ fi
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
+
 # sources /etc/bash.bashrc).
 if ! shopt -oq posix; then
   if [ -f /usr/share/bash-completion/bash_completion ]; then
@@ -114,7 +115,11 @@ fi
 
 
 
-export SSH_AUTH_SOCK=$XDG_RUNTIME_DIR/gcr/ssh
+eval $(keychain --eval --agents ssh id_rsa)
+
+export SSH_AUTH_SOCK=$(ls /tmp/ssh-*/agent.* | head -n 1)
+
+
 
 export VK_ICD_FILENAMES=/etc/vulkan/icd.d/nvidia_icd.json
 export VK_LAYER_PATH=/usr/share/vulkan/explicit_layer.d
