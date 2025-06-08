@@ -1,3 +1,4 @@
+
 (menu-bar-mode -1)
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
@@ -5,6 +6,7 @@
 (fido-vertical-mode 1)
 (delete-selection-mode 1)
 (electric-pair-mode 1)
+
 
 (setq electric-pair-pairs '((?\" . ?\") (?\{ . ?\})))
 (setq visible-bell 1)
