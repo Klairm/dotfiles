@@ -1,64 +1,40 @@
 [colors]
-background = #0A0F2C
-background-alt = #1E3A8A
-foreground = #FFFFFF
-primary =   #36A1FF
-secondary = #FF4500
-alert = #FF004D
+background = #242424
+foreground = #f6f3e8
+primary = #cae682
+secondary = #8ac6f2
+alert = #e5786d
+highlight = #444444
+comment = #99968b
+background-alt = #373B41
 disabled = #707880
 success = #00FF00
 
-[bar/desktop]
+[bar/main]
 width = 100%
 height = 24pt
-radius=  8
 background = ${colors.background}
 foreground = ${colors.foreground}
-line-size = 3pt
-border-size = 4pt
-border-color = #00000000
+border-size = 0
 padding-left = 0
-padding-right = 0
-module-margin = 1
-separator = /
+padding-right = 2
+module-margin-left = 1
+module-margin-right = 1
+separator = |
 separator-foreground = ${colors.secondary}
-font-0 = monospace;2
+font-0 = "FiraCode Nerd Font:size=12;2"
 modules-left = xworkspaces
-modules-right = eth memory cpu pulseaudio date 
-cursor-click = pointer
-cursor-scroll = ns-resize
-enable-ipc = true
+modules-right = eth wlan pulseaudio cpu memory battery date
 tray-position = right
 bottom = true
-
-[bar/example]
-width = 100%
-height = 24pt
-radius = 8
-background = ${colors.background}
-foreground = ${colors.foreground}
-line-size = 3pt
-border-size = 4pt
-border-color = #00000000
-padding-left = 0
-padding-right = 0
-module-margin = 1
-separator = 
-separator-foreground = ${colors.secondary}
-font-0 = monospace;2
-modules-left = xworkspaces
-modules-right = eth  memory cpu pulseaudio date 
 cursor-click = pointer
-cursor-scroll = ns-resize
 enable-ipc = true
-tray-position = right
-bottom = true
 
 [module/xworkspaces]
 type = internal/xworkspaces
 label-active = %name%
-label-active-background = ${colors.background-alt}
-label-active-underline= ${colors.primary}
+label-active-background = ${colors.highlight}
+label-active-underline = ${colors.primary}
 label-active-padding = 1
 label-occupied = %name%
 label-occupied-padding = 1
@@ -71,55 +47,71 @@ label-empty-padding = 1
 
 [module/pulseaudio]
 type = internal/pulseaudio
-format-volume-prefix = "VOL "
-format-volume-prefix-foreground = ${colors.primary}
-format-volume = <label-volume>
-label-volume = %percentage%%
-label-muted = muted
-label-muted-foreground = ${colors.disabled}
 
-[module/memory]
-type = internal/memory
-interval = 2
-format-prefix = "RAM "
-format-prefix-foreground = ${colors.primary}
-label = %percentage_used:2%%
+format-volume-prefix-foreground = ${colors.primary}
+format-volume = <ramp-volume>  <label-volume>
+label-volume = %percentage%%
+label-volume-foreground = ${colors.primary}
+label-muted-foreground = ${colors.disabled}
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
+label-muted =  muted
+
 
 [module/cpu]
 type = internal/cpu
 interval = 2
-format-prefix = "CPU "
-format-prefix-foreground = ${colors.primary}
-label = %percentage:2%%
+label = " %percentage:2%%"
+label-foreground = ${colors.primary}
 
-[module/date]
-type = internal/date
-date = %d-%m-%Y %H:%M
+[module/memory]
+type = internal/memory
+interval = 2
+label = " %percentage_used:2%%"
+label-foreground = ${colors.primary}
 
 [module/battery]
 type = internal/battery
-battery = BAT0  
+battery = BAT0
 adapter = AC
-full-at = 99
 poll-interval = 5
-format-prefix-foreground= ${colors.primary}
-label-charging = "%percentage%%"
-label-charging-foreground = ${colors.secondary}
-label-discharging = "Discharging: %percentage%% (%time%)"
-label-discharging-foreground = ${colors.alert}
-label-full = "%percentage%%"
-label-full-prefix = "Full:"
-format-full-prefix = "Full: "
-format-full-prefix-foreground = ${colors.primary}
-format-full-foreground = ${colors.success}
+full-at = 99
 
+label-charging = " %percentage%%"
+label-charging-foreground = ${colors.secondary}
+
+label-discharging = " %percentage%% (%time%)"
+label-discharging-foreground = ${colors.alert}
+
+label-full = " FULL %percentage%%"
+label-full-foreground = ${colors.success}
+
+[module/date]
+type = internal/date
+interval = 5
+date = %d-%m-%Y %H:%M
+label = " %date%"
+label-foreground = ${colors.secondary}
+
+[module/wlan]
+type = internal/network
+interface = wlp2s0
+interval = 5
+label-connected = " %essid% (%local_ip%)"
+label-connected-foreground = ${colors.success}
+label-disconnected = " OFF"
+label-disconnected-foreground = ${colors.disabled}
 
 [module/eth]
 type = internal/network
-interface-type = wired
-#interface = enp3s0
+interface = enp3s0
 interval = 5
-format-connected = <label-connected>
-format-disconnected = <label-disconnected>
-label-disconnected = %{F#F0C674}%ifname%%{F#707880} disconnected
-label-connected = %local_ip%
+label-connected = " %ifname% (%local_ip%)"
+label-connected-foreground = ${colors.secondary}
+label-disconnected = " OFF"
+label-disconnected-foreground = ${colors.disabled}
+
+[settings]
+screenchange-reload = true
+pseudo-transparency = true
