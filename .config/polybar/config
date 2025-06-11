@@ -23,9 +23,9 @@ module-margin-right = 1
 separator = |
 separator-foreground = ${colors.secondary}
 font-0 = "FiraCode Nerd Font:size=12;2"
-modules-left = xworkspaces
+tray-position = left
+modules-center = xworkspaces
 modules-right = eth wlan pulseaudio cpu memory battery date
-tray-position = right
 bottom = true
 cursor-click = pointer
 enable-ipc = true
@@ -105,7 +105,7 @@ label-disconnected-foreground = ${colors.disabled}
 
 [module/eth]
 type = internal/network
-interface = enp3s0
+interface = enp37s0
 interval = 5
 label-connected = " %ifname% (%local_ip%)"
 label-connected-foreground = ${colors.secondary}
