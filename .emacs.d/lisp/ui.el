@@ -1,4 +1,3 @@
-
 (menu-bar-mode -1)
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
@@ -6,8 +5,11 @@
 (fido-vertical-mode 1)
 (delete-selection-mode 1)
 (electric-pair-mode 1)
+(save-place-mode 1)
+(recentf-mode 1)
+(nyan-mode 1)
 
-
+(setq inhibit-startup-message t) 
 (setq electric-pair-pairs '((?\" . ?\") (?\{ . ?\})))
 (setq visible-bell 1)
 (setq create-lockfiles nil)
