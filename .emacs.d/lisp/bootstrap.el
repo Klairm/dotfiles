@@ -1,4 +1,4 @@
-(setq straight-disabled-packages '(project))
+
 
 (defvar bootstrap-version)
 (let ((bootstrap-file

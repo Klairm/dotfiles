@@ -5,11 +5,15 @@
   (straight-built-in-pseudo-packages '(emacs nadvice python image-mode project flymake))
   (straight-use-package-by-default t))
 
+
 (use-package project
   :straight nil)
 
+(use-package elfeed
+  :ensure t)
 
-
+(use-package imenu-list
+  :ensure t)
 (use-package multiple-cursors
   :bind (("C-S-c C-S-c" . mc/edit-lines)
          ("C->" . mc/mark-next-like-this)
@@ -36,45 +40,10 @@
   :config
   (global-company-mode t)
   (setq-default
-   company-idle-delay 0.05
+   company-idle-delay 0.15
    company-require-match nil
    company-minimum-prefix-length 0
    company-frontends '(company-preview-frontend)))
-(use-package company-tabnine
-  :after company
-  :straight t
-  :commands company-tabnine
-  :init
-  (add-to-list 'company-backends #'company-tabnine)
-  :config
-
-  (setq company-idle-delay 0
-        company-show-numbers t)
-
-
-  (setq company-frontends '(company-preview-frontend))
-  
-)
-
-
-(use-package tabnine
-  :straight (:host github :repo "shuxiao9058/tabnine")
-  :commands (tabnine-start-process tabnine-mode)
-  :hook (prog-mode . tabnine-mode)
-  :config
-  (setq tabnine-wait 1
-        tabnine-minimum-prefix-length 0)
-  (tabnine-start-process)
-  (add-hook 'kill-emacs-hook #'tabnine-kill-process)
-  (add-to-list 'completion-at-point-functions #'tabnine-completion-at-point)
-
-  (define-key tabnine-completion-map (kbd "<tab>") #'tabnine-accept-completion)
-  (define-key tabnine-completion-map (kbd "TAB") #'tabnine-accept-completion)
-  (define-key tabnine-completion-map (kbd "M-f") #'tabnine-accept-completion-by-word)
-  (define-key tabnine-completion-map (kbd "M-<return>") #'tabnine-accept-completion-by-line)
-  (define-key tabnine-completion-map (kbd "C-g") #'tabnine-clear-overlay)
-  (define-key tabnine-completion-map (kbd "M-[") #'tabnine-previous-completion)
-  (define-key tabnine-completion-map (kbd "M-]") #'tabnine-next-completion))
 
 
 (use-package windresize

@@ -7,7 +7,7 @@
 (electric-pair-mode 1)
 (save-place-mode 1)
 (recentf-mode 1)
-(nyan-mode 1)
+
 
 (setq inhibit-startup-message t) 
 (setq electric-pair-pairs '((?\" . ?\") (?\{ . ?\})))
