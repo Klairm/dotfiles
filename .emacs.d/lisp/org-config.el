@@ -9,3 +9,11 @@
          "%i\n  "
          :immediate-finish t
          :kill-contents t)))
+(defun klairm/org-add-task (tarea)
+  (interactive "sNew task: ") ; interactive is a way to tell emacs that the command can be run interactivly so it can pass the argument from the minibuffer 
+    (with-current-buffer (find-file-noselect todo-file)
+      (goto-char (point-max))
+      (insert (format "\n* TODO %s\n" tarea ))
+      (save-buffer)))
+
+
