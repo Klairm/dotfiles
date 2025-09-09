@@ -9,3 +9,5 @@
          "%i\n  "
          :immediate-finish t
          :kill-contents t)))
+(setq org-hide-emphasis-markers t)
+(add-hook 'org-mode-hook 'visual-line-mode)

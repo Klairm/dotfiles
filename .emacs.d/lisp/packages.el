@@ -11,6 +11,8 @@
 
 (use-package elfeed
   :ensure t)
+(use-package fic-mode
+  :ensure t)
 
 (use-package imenu-list
   :ensure t)
@@ -33,7 +35,10 @@
   :ensure t)
 
 (use-package projectile
-  :after project)
+  :after project
+  :bind ("C-x p v" .  projectile-run-vterm)
+
+  )
 
 (use-package company
   :defer 0.1
@@ -53,14 +58,15 @@
   :config
   (cl-pushnew '(php-mode . ("intelephense" "--stdio"))
               eglot-server-programs :test #'equal)
+  (cl-pushnew '(js-mode . ("typescript-language-server" "--stdio")) 
+            eglot-server-programs 
+            :test #'equal)
   :bind ("C-c f" . eglot-format)
   :hook (prog-mode . eglot-ensure))
 
 (use-package deadgrep
   :bind ("M-s s" . deadgrep))
 
-(use-package org
-  :ensure nil)
 
 (use-package org-download
   :bind ("M-o p" . org-download-clipboard)
