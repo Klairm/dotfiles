@@ -23,5 +23,6 @@ require("lazy").setup({
     "onsails/lspkind.nvim",                -- iconos para las sugerencias
     "nvim-telescope/telescope.nvim",       -- búsqueda estilo helm
     "nvim-lua/plenary.nvim",
+    "ray-x/lsp_signature.nvim",            -- mostrar parámetros de funciones al escribir
 })
 

@@ -25,6 +25,7 @@ vim.o.smartcase = true
 vim.o.clipboard = "unnamedplus"
 vim.o.mouse = "a"
 vim.o.autochdir = true
+vim.o.updatetime = 300
 
 -- Colores personalizados (Wallpaper)
 local colors = {
@@ -33,6 +34,7 @@ local colors = {
     accent = "#798393",
     selection = "#1c2635",
     comment = "#606b7c",
+    red = "#e5786d",
 }
 
 vim.cmd("highlight Normal guibg=" .. colors.bg .. " guifg=" .. colors.fg)
@@ -47,6 +49,12 @@ vim.cmd("highlight Constant guifg=" .. colors.accent)
 vim.cmd("highlight Type guifg=" .. colors.accent)
 vim.cmd("highlight String guifg=" .. colors.comment)
 vim.cmd("highlight Search guibg=" .. colors.accent .. " guifg=" .. colors.bg)
+
+-- Highlights para Diagnósticos (Subrayado rojo y signos)
+vim.cmd("highlight DiagnosticUnderlineError gui=undercurl guisp=" .. colors.red)
+vim.cmd("highlight DiagnosticSignError guifg=" .. colors.red)
+vim.cmd("highlight DiagnosticSignWarn guifg=" .. colors.accent)
+vim.cmd("highlight DiagnosticFloatingError guifg=" .. colors.red)
 
 -- Autocompletado y Ventanas Flotantes (Sugerencias/Documentación)
 vim.cmd("highlight Pmenu guibg=" .. colors.selection .. " guifg=" .. colors.fg)
