@@ -1,0 +1,23 @@
+{
+    "python.languageServer": "Default",
+    "workbench.colorCustomizations": {
+        "editor.background": "#0d121a",
+        "sideBar.background": "#0a111a",
+        "activityBar.background": "#0d121a",
+        "editor.foreground": "#cacfd7",
+        "terminal.background": "#0d121a",
+        "terminal.foreground": "#cacfd7",
+        "statusBar.background": "#1c2635",
+        "statusBar.foreground": "#cacfd7",
+        "titleBar.activeBackground": "#0d121a",
+        "titleBar.activeForeground": "#cacfd7",
+        "menubar.selectionBackground": "#1c2635",
+        "editor.selectionBackground": "#1c2635",
+        "editorLineNumber.foreground": "#606b7c",
+        "editorLineNumber.activeForeground": "#798393",
+        "tab.activeBackground": "#1c2635",
+        "tab.activeForeground": "#cacfd7",
+        "tab.inactiveBackground": "#0d121a",
+        "tab.inactiveForeground": "#606b7c"
+    }
+}
