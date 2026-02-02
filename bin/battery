@@ -1,0 +1,22 @@
+#!/bin/bash
+
+# Detectar el usuario si no es root
+USER_NAME="ivan"
+
+# Obtener el ID del usuario
+USER_ID=$(id -u "$USER_NAME")
+
+# Exportar DISPLAY (normalmente es :0, pero puede ser diferente en setups multimonitor o remotos)
+export DISPLAY=:0
+
+
+export DBUS_SESSION_BUS_ADDRESS=unix:path=/tmp/dbus-WZI8mf5DKt,guid=24ec1649655efdca0b4cbcd8689cea98
+
+# Obtener el porcentaje restante de batería
+remaining=$(cat /sys/class/power_supply/BAT0/capacity)
+
+# Verificar si está por debajo del umbral
+if [ "$remaining" -lt 30 ]; then
+    DISPLAY=:0 /usr/bin/notify-send "🔋 ¡Batería baja!" "Te queda $remaining%" -u critical
+fi
+

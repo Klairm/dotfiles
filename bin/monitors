@@ -1,0 +1,12 @@
+#!/bin/bash
+INTERNAL=$(xrandr | grep " connected" | grep eDP | cut -d' ' -f1)
+EXTERNAL=$(xrandr | grep " connected" | grep HDMI | cut -d' ' -f1)
+
+if [ -n "$EXTERNAL" ]; then
+    xrandr --output "$EXTERNAL" --primary --auto --output "$INTERNAL" --auto --left-of "$EXTERNAL"
+    i3-msg "workspace 1; move workspace to output $EXTERNAL"
+    i3-msg "workspace 2; move workspace to output $INTERNAL"
+else
+    xrandr --output "$INTERNAL" --primary --auto
+fi
+
