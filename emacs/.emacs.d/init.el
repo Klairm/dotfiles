@@ -1,0 +1,11 @@
+(add-to-list 'load-path "~/.emacs.d/lisp")
+(setq native-comp-async-report-warnings-errors 'error)
+(setq warning-minimum-level :error)
+(setq straight-disabled-packages '(project))
+
+(load "bootstrap.el")     
+(load "packages.el")      
+(load "ui.el")            
+(load "keybindings.el")   
+(load "programming.el")   
+(load "org-config.el")    

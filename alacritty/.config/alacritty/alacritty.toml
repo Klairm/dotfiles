@@ -8,3 +8,8 @@ style = "Regular"
 
 [general]
 import = ["/home/ivan/.config/alacritty/themes/wallpaper.toml"]
+
+[window]
+padding = { x = 12, y = 12 }
+opacity = 0.95
+blur = true

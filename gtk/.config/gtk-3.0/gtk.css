@@ -1,0 +1,38 @@
+
+@define-color theme_bg_color #0d121a;
+@define-color theme_fg_color #cacfd7;
+@define-color theme_base_color #0d121a;
+@define-color theme_text_color #cacfd7;
+@define-color theme_selected_bg_color #798393;
+@define-color theme_selected_fg_color #0d121a;
+@define-color theme_header_background #1c2635;
+@define-color theme_header_foreground #cacfd7;
+@define-color borders #495567;
+
+/* Nemo specific overrides */
+.nemo-window {
+    background-color: @theme_bg_color;
+    color: @theme_fg_color;
+}
+
+.nemo-window .sidebar {
+    background-color: #0a111a;
+}
+
+.nemo-window .view {
+    background-color: @theme_base_color;
+}
+
+/* Common GTK3 overrides */
+window, grid, box {
+    background-color: @theme_bg_color;
+    color: @theme_fg_color;
+}
+
+selection {
+    background-color: @theme_selected_bg_color;
+    color: @theme_selected_fg_color;
+}
+
+/* Import original colors if they exist, but our defines above take precedence for standard names */
+@import 'colors.css';

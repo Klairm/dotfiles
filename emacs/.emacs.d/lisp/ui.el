@@ -1,0 +1,38 @@
+(menu-bar-mode -1)
+(tool-bar-mode -1)
+(scroll-bar-mode -1)
+(global-display-line-numbers-mode t)
+(fido-vertical-mode 1)
+(delete-selection-mode 1)
+(electric-pair-mode 1)
+(save-place-mode 1)
+(recentf-mode 1)
+
+
+(setq inhibit-startup-message t) 
+(setq electric-pair-pairs '((?\" . ?\") (?\{ . ?\})))
+(setq visible-bell 1)
+(setq create-lockfiles nil)
+(setq make-backup-files nil)
+(setq frame-title-format "%f")
+(setq gc-cons-threshold (* 50 1000 1000))
+
+
+
+(load-theme 'wombat t)
+
+;; Colores personalizados (Wallpaper)
+(set-face-background 'default "#0d121a")
+(set-face-foreground 'default "#cacfd7")
+(set-face-background 'region "#1c2635")
+(set-face-foreground 'region "#cacfd7")
+(set-face-foreground 'line-number "#606b7c")
+(set-face-background 'line-number "#0d121a")
+(set-face-foreground 'line-number-current-line "#798393")
+(set-face-foreground 'font-lock-comment-face "#606b7c")
+(set-face-foreground 'font-lock-keyword-face "#798393")
+(set-face-foreground 'font-lock-function-name-face "#798393")
+(set-face-foreground 'font-lock-variable-name-face "#cacfd7")
+(set-face-foreground 'font-lock-string-face "#606b7c")
+(set-face-foreground 'font-lock-type-face "#798393")
+(set-face-foreground 'font-lock-constant-face "#798393")

@@ -114,13 +114,15 @@ if ! shopt -oq posix; then
 fi
 
 
-
-eval $(keychain --eval --agents ssh id_rsa)
-
-export SSH_AUTH_SOCK=$(ls /tmp/ssh-*/agent.* | head -n 1)
-
-
-
 export VK_ICD_FILENAMES=/etc/vulkan/icd.d/nvidia_icd.json
 export VK_LAYER_PATH=/usr/share/vulkan/explicit_layer.d
-alias update="sudo apt update && sudo apt upgrade -y"
+alias update="sudo apt update && sudo apt upgrade -y && flatpak update -y"
+
+# Created by `pipx` on 2025-06-13 16:55:31
+export PATH="$PATH:/home/ivan/.local/bin:$HOME/.dotnet"
+export DOTNET_ROOT=$HOME/.dotnet
+
+. "$HOME/.cargo/env"
+
+# Starship Prompt
+eval "$(starship init bash)"

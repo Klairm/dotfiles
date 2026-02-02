@@ -1,0 +1,8 @@
+#!/bin/bash
+# Configurar monitores
+xrandr --output HDMI-A-0 --primary --rate 74.97 --output eDP --auto --right-of HDMI-A-0
+
+# Organizar workspaces
+i3-msg "workspace 1; move workspace to output HDMI-A-0"
+i3-msg "workspace 2; move workspace to output eDP"
+
