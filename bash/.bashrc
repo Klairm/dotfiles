@@ -117,6 +117,7 @@ fi
 export VK_ICD_FILENAMES=/etc/vulkan/icd.d/nvidia_icd.json
 export VK_LAYER_PATH=/usr/share/vulkan/explicit_layer.d
 alias update="sudo apt update && sudo apt upgrade -y && flatpak update -y"
+alias vim="nvim"
 
 # Created by `pipx` on 2025-06-13 16:55:31
 export PATH="$PATH:/home/ivan/.local/bin:$HOME/.dotnet"
